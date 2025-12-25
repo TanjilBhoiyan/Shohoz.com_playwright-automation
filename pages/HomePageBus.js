@@ -1,25 +1,31 @@
-export class HomePage{
+export class HomePageBus{
 
 
     constructor(page){
         this.page = page;
-        //this.oneWayRadioButtonLocator='button.btn-trip-type:has-text("One Way")';
         this.oneWayRadioCheckBoxLocator='button.btn-trip-type:has-text("One Way")';
-        //this.roundWayRadioButtonLocation='//button[normalize-space()="Round Way"]';
         this.returnDateAddButtonLocator='button[class="return-trip-btn uppercase text-some-orange"]';
         this.roundWayCheckBoxLocator= '//button[normalize-space()="Round Way"]';
-        //this.ReturnDateTextLocator ='p[class="label !font-bold"]';
         this.journeyDatePickLocator='#doj';
         this.returnDatePickLocator='#dor';
         this.fromLocationInputLocator = '#fromcity';
         this.toLocationInputLocator='#tocity';
-        // use dynamic locator for date seletion
-        //const targetDate = '24'; 
-        //this.selectJourneydateLocator = `(//div[@class='btn-light'][normalize-space()='${targetDate}'])[1]`;
         this.searchButtonLocator='button[type="submit"]';
+        this.startNewSearchLocator='(//*[name()="svg"][@class="w-6 h-6 text-gray-600"])[1]';
+        this.shohozLogoLocator='img[alt="Logo"]';
+
+ 
+    }
+    frominput(){
+        return this.page.locator(this.fromLocationInputLocator);
+    }
+    shohozlogo(){
+        return this.page.locator(this.shohozLogoLocator);
+    }
+    startnewsearch(){
+        return this.page.locator(this.startNewSearchLocator);
     }
     searchbutton(){
-        //this.page.waitForLoadState('load');
         return this.page.locator(this.searchButtonLocator);
     }
     async selectjourneydate(journey_date){
