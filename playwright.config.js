@@ -13,6 +13,7 @@ import { defineConfig, devices } from '@playwright/test';
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
+  
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -34,6 +35,7 @@ export default defineConfig({
     launchOptions: {
       args: [
         "--disable-notifications",
+        "--disable-blink-features=AutomationControlled",
         //"--disable-popup-blocking",
         //"--disable-geolocation",
         //"--disable-media-stream"
@@ -85,5 +87,6 @@ export default defineConfig({
   //   url: 'http://localhost:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
+  
 });
 

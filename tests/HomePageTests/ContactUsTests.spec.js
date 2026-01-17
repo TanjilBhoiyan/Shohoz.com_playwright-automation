@@ -1,5 +1,5 @@
 import {test,expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
+import { LoginPage } from '../../pages/LoginPage';
 import { ContactUs } from '../pages/ContactUsPage';
 //import { HomePageBus } from '../pages/HomePageBus';
 
@@ -16,47 +16,47 @@ test.describe('',()=>{
         contactus = new ContactUs(page);
     })
     test('Verify try to submit contact us information without Name Field',async ({page})=>{
-        await contactus.contactusbutton().click();
-        await contactus.purposeOfvehicle('Air');
-        await (await contactus.yourname()).fill('');
-        await (await contactus.phonenumber()).fill('01918531610');
+        await contactus.contactUsButton().click();
+        await contactus.purposeOfVehicle('Air');
+        await contactus.yourName('');
+        await contactus.phoneNumber('01918531610');
         await expect(page.getByText('The name field is required.')).toBeVisible();
         await expect(page.getByText('Send')).toBeVisible();
     })
     test('Verify try to submit contact us information without Phone Number',async ({page})=>{
-        await contactus.contactusbutton().click();
-        await contactus.purposeOfvehicle('Air');
-        await (await contactus.phonenumber()).fill('');
-        await (await contactus.yourname()).fill('Test name');
+        await contactus.contactUsButton().click();
+        await contactus.purposeOfVehicle('Air');
+        await contactus.phoneNumber('');
+        await contactus.yourName('Test name');
         await expect(page.getByText('The phone number field is required.')).toBeVisible();
         await expect(page.getByText('Send')).toBeVisible();
     })
     test('Verify try to submit contact us information without Email Field',async ({page})=>{
-        await contactus.contactusbutton().click();
-        await contactus.purposeOfvehicle('Air');
+        await contactus.contactUsButton().click();
+        await contactus.purposeOfVehicle('Air');
         await (await contactus.email()).fill('');
-        await (await contactus.yourname()).fill('Test name');
+        await contactus.yourName('Test name');
         await expect(page.getByText('The email field is required.')).toBeVisible();
         await expect(page.getByText('Send')).toBeVisible();
     })
-    test.only('Verify try to submit contact us information without Message Field',async ({page})=>{
-        await contactus.contactusbutton().click();
-        await contactus.purposeOfvehicle('Air');
-        await (await contactus.message()).fill('');
-        await (await contactus.yourname()).fill('Test name');
+    test('Verify try to submit contact us information without Message Field',async ({page})=>{
+        await contactus.contactUsButton().click();
+        await contactus.purposeOfVehicle('Air');
+        await contactus.message('');
+        await contactus.yourName('Test name');
         await expect(page.getByText('The message field is required.')).toBeVisible();
         await expect(page.getByText('Send')).toBeVisible();
     })
     test('Verify successfully submit contact us information',async ({page})=>{
-        await contactus.contactusbutton().click();
-        await contactus.purposeOfvehicle('Air');
-        await (await contactus.yourname()).fill('Test name');
-        await contactus.yourcity('Dhaka');
-        await (await contactus.phonenumber()).fill('01918531610');
+        await contactus.contactUsButton().click();
+        await contactus.purposeOfVehicle('Air');
+        await contactus.yourName('Test name');
+        await contactus.yourCity('Dhaka');
+        await contactus.phoneNumber('01918531610');
         await (await contactus.email()).fill('test@gmail.com');
-        await (await contactus.message()).fill('This is a automatic message');
-        await contactus.sendbutton();
-        await contactus.sendbutton();
+        await contactus.message('This is a automatic message');
+        await contactus.sendButton();
+        await contactus.sendButton();
         await expect(page.getByText('Your query is noted. We will get back to you soon.')).toBeVisible();
     })
     

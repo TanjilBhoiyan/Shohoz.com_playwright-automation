@@ -15,35 +15,30 @@ export class ContactUs{
     async confirmationmessage(){
         await this.page.locator(this.confirmationmessage);
     }
-    async sendbutton(){
+    async sendButton(){
         await this.page.locator(this.sendButtonLocator).click();
     }
-    async message(){
-        await this.page.waitForTimeout(1000);
-        return this.page.locator(this.messageLocator);
+    async message(message){
+        await this.page.locator(this.messageLocator).fill(message);
     }
     async email(){
         await this.page.waitForTimeout(1000);
         return this.page.locator(this.emailLocator);
     }
-    async phonenumber(){
-        await this.page.waitForTimeout(1000);
-        return this.page.locator(this.phoneNumberLocator);
-        
+    async phoneNumber(phone_number){
+        await this.page.locator(this.phoneNumberLocator).fill(phone_number);
     }
-    async yourcity(your_city){
+    async yourCity(your_city){
         await this.page.waitForTimeout(1000);
-        //await this.page.waitForSelector(this.yourCityLocator);
         await this.page.selectOption(this.yourCityLocator , {lebel: your_city});
     }
-    async yourname(){
-        await this.page.waitForTimeout(1000);
-        return this.page.locator(this.yourNameLocator);
+    async yourName(your_name){
+        await this.page.locator(this.yourNameLocator).fill(your_name);
     }
-    contactusbutton(){
+    contactUsButton(){
         return this.page.locator(this.contactusButtonLocator);
     }
-    async purposeOfvehicle(purpose_Of_vehicle) {
+    async purposeOfVehicle(purpose_Of_vehicle) {
             await this.page.selectOption(this.purposeLocator, {label: purpose_Of_vehicle});
     }
 
