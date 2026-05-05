@@ -1,5 +1,6 @@
 import {test , expect } from '@playwright/test';
-import { LoginPage } from '../../pages/LoginPage';
+//import { LoginPage } from '../../pages/LoginPage';
+import { LoginPage } from '../../pages/Login&RegisterPage/LoginPage';
 import { AirTicketSearch } from '../../pages/AirPages/AirTicketSearchPage';
 
 test.describe.configure({mode:'serial'});
